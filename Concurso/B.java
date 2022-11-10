@@ -18,7 +18,7 @@ public class B{
                     } else {
                         switch (sonidoAleatorio){
                             case 0:
-                                sonido="PIC";
+                                sonido="POC";
                                 break;
                             case 1:
                                 sonido="POC";
