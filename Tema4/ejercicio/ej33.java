@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class ej33 {
-    private static String funcion(String lado,String dentro, int h,String cosa){
+    private static String funcion(String lado,String dentro, int h){
         String res="";
         for (int i = 1; i <= h; i++) {
-            res=res+(cosa.equals("fila")?((i==h)?funcion(" ","*",h,"vasura") :funcion("*"," ",h,"vasura")+"\n"):((i==1 || i==h)?lado:dentro));
+            res+=(lado.equals("vasura")?((i==h)?funcion(" ","*",h) :funcion("*"," ",h)+"\n"):((i==1 || i==h)?lado:dentro));
         }
         return res;
     }
@@ -13,7 +13,7 @@ public class ej33 {
         System.out.print("Introduce una altura: ");
         int h=sc.nextInt();
         sc.close();
-        String res=funcion("vasura","vasura",h,"fila");
+        String res=funcion("vasura","vasura",h);
         System.out.println(res); 
     }
 }
