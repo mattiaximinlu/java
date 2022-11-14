@@ -13,16 +13,15 @@ public class ej24 {
         System.out.println("------------------------------------------------");
         for (int nFila = 0; nFila < h; nFila++) {
             int num=1;
-            int reves=0;
+            boolean noReves=true;
             for (int nColumna = 0; nColumna < h*2; nColumna++) {
-                
                 if (inicio<=nColumna && nColumna<=fin) {
                     System.out.print(num);
-                    if (num<=nFila && reves==0) {
+                    if (num<=nFila && noReves) {
                         num++;    
                     } else {
                         num--;
-                        reves=1;
+                        noReves=false;
                     }
                 } else {
                     System.out.print(" ");
