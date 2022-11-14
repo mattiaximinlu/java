@@ -6,27 +6,17 @@ public class ej24 {
         System.out.print("Altura de la piramide: ");
         int h=sc.nextInt();
         sc.close();
-        int inicio=h-1;
-        int fin=h-1;
         System.out.println("------------------------------------------------");
         for (int nFila = 0; nFila < h; nFila++) {
-            int num=1;
-            boolean noReves=true;
-            for (int nColumna = 0; nColumna < h*2-1; nColumna++) {
-                if (inicio<=nColumna && nColumna<=fin) {
-                    System.out.print(num);
-                    if (num<=nFila && noReves) {
-                        num++;    
-                    } else {
-                        num--;
-                        noReves=false;
-                    }
-                } else {
-                    System.out.print(" ");
-                }
+            for (int espacio = h-1-nFila; espacio > 0; espacio--) {
+                System.out.print(" ");
             }
-            inicio=inicio-1;
-            fin=fin+1;
+            for (int n = 1; n <= nFila+1; n++) {
+                System.out.print(n);
+            }
+            for (int n = nFila; n > 0; n--) {
+                System.out.print(n);
+            }
             System.out.println();
         }
     }
