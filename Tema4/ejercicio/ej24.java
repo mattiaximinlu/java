@@ -12,7 +12,7 @@ public class ej24 {
         for (int nFila = 0; nFila < h; nFila++) {
             int num=1;
             boolean noReves=true;
-            for (int nColumna = 0; nColumna < h*2; nColumna++) {
+            for (int nColumna = 0; nColumna < h*2-1; nColumna++) {
                 if (inicio<=nColumna && nColumna<=fin) {
                     System.out.print(num);
                     if (num<=nFila && noReves) {
