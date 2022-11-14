@@ -10,11 +10,11 @@ public class ej23 {
         while (seguir) {
             System.out.print("Introduce un número: ");
             num=sc.nextFloat();
-            if (num+tot>=10000) {
-                seguir=false;
-            } else {
+            if (num+tot<10000) {
                 vez=vez+1;
                 tot=num+tot;
+            } else {
+                seguir=false;
             }
         }
         sc.close();
