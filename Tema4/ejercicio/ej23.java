@@ -14,7 +14,7 @@ public class ej23 {
                 seguir=false;
             } else {
                 vez=vez+1;
-                tot=num+tot;   
+                tot=num+tot;
             }
         }
         sc.close();
