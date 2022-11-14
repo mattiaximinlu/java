@@ -5,11 +5,9 @@ public class ej24 {
         Scanner sc=new Scanner(System.in);
         System.out.print("Altura de la piramide: ");
         int h=sc.nextInt();
-        sc.nextLine();
         sc.close();
         int inicio=h-1;
         int fin=h-1;
-
         System.out.println("------------------------------------------------");
         for (int nFila = 0; nFila < h; nFila++) {
             int num=1;
@@ -30,7 +28,6 @@ public class ej24 {
             inicio=inicio-1;
             fin=fin+1;
             System.out.println();
-        
         }
     }
 }
