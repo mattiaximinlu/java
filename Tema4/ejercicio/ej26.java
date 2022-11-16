@@ -17,12 +17,12 @@ public class ej26 {
             num=(num-resta)/10;
         }
         int pos=0;
-        System.out.print("pos: ");
+        System.out.print("pos:");
         while (nuevonum!=0){
             pos++;
             int resta=nuevonum%10;
             if (resta==digitoNum) {
-                System.out.print(pos+" ");
+                System.out.print(" "+pos);
             }
             nuevonum=(nuevonum-resta)/10;
         }
