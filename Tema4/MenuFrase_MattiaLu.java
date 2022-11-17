@@ -34,8 +34,9 @@ public class MenuFrase_MattiaLu {
                 case 'c':
                     String[] palabra=frase.split(" ");
                     int vez=0;
-                    for (String i : palabra)
+                    for (String i : palabra){
                         vez++;
+                    }
                     System.out.println("Hay "+vez+" palabras.");
                     break;
                 case 'd':
