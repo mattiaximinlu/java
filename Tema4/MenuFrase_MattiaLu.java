@@ -14,6 +14,7 @@ public class MenuFrase_MattiaLu {
             "* Opción e - Limpiar frase\n"+
             "* Opción s - Salir");
             System.out.print("Opcion: ");
+            //evitar opcion vacia.
             try {
                 opcion=sc.nextLine().charAt(0);    
             } catch (Exception e) {
