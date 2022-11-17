@@ -30,11 +30,7 @@ public class MenuFrase_MattiaLu {
                     //este if es porque aunque esté vacío sale uno
                     if (!(frase.equals(""))) {
                         String[] palabra=frase.split(" ");
-                        for (String i : palabra){
-                            //para que no sale 'i' amarilla;
-                            i=i+i;
-                            vez++;
-                        }
+                        vez=palabra.length;
                     }
                     System.out.println("Hay "+vez+" palabras.");
                     break;
