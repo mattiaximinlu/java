@@ -23,15 +23,11 @@ public class MenuFrase_MattiaLu {
                     frase+=fraseUsuario;
                     break;
                 case "b":
-                    System.out.println(frase.equals("")?"La frase está vacía":frase);
+                    System.out.println(frase.equals("")?"La frase está vacía":"La frase actual es: \""+frase+"\"");
                     break;
                 case "c":
-                    int vez=0;
-                    //este if es porque aunque esté vacío sale uno
-                    if (!(frase.equals(""))) {
-                        String[] palabra=frase.split(" ");
-                        vez=palabra.length;
-                    }
+                    String[] palabra=frase.split(" ");
+                    int vez=!frase.equals("")?palabra.length:0;
                     System.out.println("Hay "+vez+" palabras.");
                     break;
                 case "d":
@@ -59,7 +55,7 @@ public class MenuFrase_MattiaLu {
                 case "s":
                     break;
                 default:
-                    System.out.println("Ha habido un error, elige una opcion correcta");
+                    System.out.println("Esta frase no debería aparecer.");
                     break;
             }
             if (!(opcion.equals("s"))){
