@@ -20,7 +20,10 @@ public class MenuFrase_MattiaLu {
                 case "a":
                     System.out.print("Introduce una frase: ");
                     String fraseUsuario=sc.nextLine();
-                    frase+=fraseUsuario;
+
+                    //eliminar espacio al principio y al final de la frase y la frase introducida por el usuario.
+                    frase+=" "+fraseUsuario.trim();
+                    frase=frase.trim();
                     break;
                 case "b":
                     System.out.println(frase.equals("")?"La frase está vacía":"La frase actual es: \""+frase+"\"");
@@ -38,14 +41,24 @@ public class MenuFrase_MattiaLu {
                         if (usuario.length()==1) {
                             int aparece=0;
                             String pos="";
+                            //opcion 1
+                            int res=-1;
+                            do {
+                                res=frase.toLowerCase().indexOf(usuario.toLowerCase(),res+1);
+                                if (!(res==-1)) {
+                                    aparece++;
+                                    pos=pos+" "+(res+1);       
+                                }
+                            } while (res!=-1);
+                            //opcion 2
+                            pos="";
                             for (int i = 0; i < frase.length(); i++) {
                                 if (usuario.compareToIgnoreCase(frase.charAt(i)+"")==0) {
                                     aparece++;
                                     pos=pos+" "+(i+1);
                                 }
                             }
-                            System.out.print(aparece==0?"No hay.":"Aparece "+aparece+" vez. ");
-                            System.out.println(aparece==1?"Y está en la posción"+pos:"Y están en las posiciones"+pos);
+                            System.out.println(aparece==0?"No hay.":"Aparece "+aparece+" vez. "+(aparece==1?"Y está en la posción"+pos:"Y están en las posiciones"+pos));
                         }else{
                             System.out.print("Ha habido un error. ");
                         }
@@ -58,7 +71,7 @@ public class MenuFrase_MattiaLu {
                 case "s":
                     break;
                 default:
-                    System.out.println("Esta frase no debería aparecer.");
+                    System.out.println("Elige una opción correcta.");
                     break;
             }
             if (!(opcion.equals("s"))){
