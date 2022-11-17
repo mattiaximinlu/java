@@ -37,12 +37,15 @@ public class MenuFrase_MattiaLu {
                         usuario=sc.nextLine();
                         if (usuario.length()==1) {
                             int aparece=0;
+                            String pos="";
                             for (int i = 0; i < frase.length(); i++) {
                                 if (usuario.compareToIgnoreCase(frase.charAt(i)+"")==0) {
                                     aparece++;
+                                    pos=pos+" "+(i+1);
                                 }
                             }
-                            System.out.println("Aparece "+aparece+" veces.");
+                            System.out.print(aparece==0?"No hay.":"Aparece "+aparece+" vez. ");
+                            System.out.println(aparece==1?"Y está en la posción"+pos:"Y están en las posiciones"+pos);
                         }else{
                             System.out.print("Ha habido un error. ");
                         }
