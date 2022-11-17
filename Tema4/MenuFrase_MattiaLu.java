@@ -4,73 +4,74 @@ public class MenuFrase_MattiaLu {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         String frase="";
-        char opcion=' ';
+        String opcion="";
         do {
-            opcion=' ';
-            System.out.println("* Opción a - Añadir a la frase (añadiendo al final de la frase ya existente)\n"+
-            "* Opción b - Indicar la ultima frase introducida (el programa escribirá la frase que el usuario está creando y analizando, si la frase está vacía indicarlo)\n"+
+            System.out.println("------------------------------------------------------------------");
+            System.out.println("* Opción a - Añadir a la frase\n"+
+            "* Opción b - Indicar la ultima frase introducida\n"+
             "* Opción c - Indicar el número de palabras que tiene la frase\n"+
-            "* Opción d - Indicar cuantas veces a aparece un carácter en la frase (deberá preguntar por el carácter a buscar, mostrar el número de veces que se repite dicho carácter y sus posiciones en la frase, da igual si está escrito en mayúscula o minúscula)\n"+
+            "* Opción d - Indicar cuantas veces a aparece un carácter en la frase\n"+
             "* Opción e - Limpiar frase\n"+
             "* Opción s - Salir");
             System.out.print("Opcion: ");
             //evitar opcion vacia.
-            try {
-                opcion=sc.nextLine().charAt(0);    
-            } catch (Exception e) {
-            }
+            opcion=sc.nextLine();
             switch (opcion) {
-                case 'a':
+                case "a":
                     System.out.print("Introduce una frase: ");
                     String fraseUsuario=sc.nextLine();
                     frase+=fraseUsuario;
                     break;
-                case 'b':
+                case "b":
                     System.out.println(frase.equals("")?"La frase está vacía":frase);
                     break;
-                case 'c':
-                    String[] palabra=frase.split(" ");
+                case "c":
                     int vez=0;
-                    for (String i : palabra){
-                        vez++;
+                    //este if es porque aunque esté vacío sale uno
+                    if (!(frase.equals(""))) {
+                        String[] palabra=frase.split(" ");
+                        for (String i : palabra){
+                            //para que no sale 'i' amarilla;
+                            i=i+i;
+                            vez++;
+                        }
                     }
                     System.out.println("Hay "+vez+" palabras.");
                     break;
-                case 'd':
-                    
-                    char caracter;
-                    boolean repet=true;
-                    while (repet) {
-                        try {
-                            System.out.print("Introduce un caracter: ");
-                            caracter=sc.nextLine().charAt(0);    
+                case "d":
+                    String usuario="";
+                    do {
+                        System.out.print("Introduce un caracter: ");
+                        usuario=sc.nextLine();
+                        if (usuario.length()==1) {
                             int aparece=0;
                             for (int i = 0; i < frase.length(); i++) {
-                                if (frase.charAt(i)==caracter) {
+                                if (usuario.compareToIgnoreCase(frase.charAt(i)+"")==0) {
                                     aparece++;
-                               }
+                                }
                             }
                             System.out.println("Aparece "+aparece+" veces.");
-                            repet=false;
-                        } catch (Exception e) {
+                        }else{
                             System.out.print("Ha habido un error. ");
-                        }   
-                    }
+                        }
+                    } while (usuario.length()!=1);
                     break;
-                case 'e':
+                case "e":
                     frase="";
+                    System.out.println("Se ha limpiado la frase");
                     break;
-                case 's':
+                case "s":
                     break;
                 default:
                     System.out.println("Ha habido un error, elige una opcion correcta");
                     break;
             }
-            if (opcion!='s'){
+            if (!(opcion.equals("s"))){
+                System.out.println("------------------------------------------------------------------");
                 System.out.print("Pulse ENTER para continuar.");
                 sc.nextLine();
             }
-        } while (opcion!='s');
+        } while (!(opcion.equals("s")));
         sc.close();
     }
 }
