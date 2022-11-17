@@ -26,11 +26,7 @@ public class MenuFrase_MattiaLu {
                     frase+=fraseUsuario;
                     break;
                 case 'b':
-                    if (frase.equals("")) {
-                        System.out.println("La frase está vacía");
-                    } else {
-                        System.out.println(frase);    
-                    }
+                    System.out.println(frase.equals("")?"La frase está vacía":frase);
                     break;
                 case 'c':
                     String[] palabra=frase.split(" ");
@@ -41,15 +37,25 @@ public class MenuFrase_MattiaLu {
                     System.out.println("Hay "+vez+" palabras.");
                     break;
                 case 'd':
-                    System.out.print("Introduce un caracter: ");
-                    char caracter=sc.nextLine().charAt(0);
-                    int aparece=0;
-                    for (int i = 0; i < frase.length(); i++) {
-                        if (frase.charAt(i)==caracter) {
-                            aparece++;
-                        }
+                    
+                    char caracter;
+                    boolean repet=true;
+                    while (repet) {
+                        try {
+                            System.out.print("Introduce un caracter: ");
+                            caracter=sc.nextLine().charAt(0);    
+                            int aparece=0;
+                            for (int i = 0; i < frase.length(); i++) {
+                                if (frase.charAt(i)==caracter) {
+                                    aparece++;
+                               }
+                            }
+                            System.out.println("Aparece "+aparece+" veces.");
+                            repet=false;
+                        } catch (Exception e) {
+                            System.out.print("Ha habido un error. ");
+                        }   
                     }
-                    System.out.println("Aparece "+aparece+" veces.");
                     break;
                 case 'e':
                     frase="";
