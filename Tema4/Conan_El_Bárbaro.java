@@ -1,30 +1,6 @@
 import java.util.Scanner;
 
 public class Conan_El_Bárbaro {
-    //peleas
-    private static String pelea(String atacante,String defensor,int attMax,int defMax,String JUGADOR) {
-        String ganador;
-    
-        int att=(int)(Math.random()*(attMax+1));
-        System.out.println(atacante+"-Ataca-"+att);
-        //comprobacion de si se autolesiona o no
-        if (atacante.equals(JUGADOR)&&att<=5) {
-            System.out.println("Conan se autolesiona");
-            ganador="LESIONA";
-        } else {
-            int def=(int)(Math.random()*(defMax+1));
-            System.out.println(defensor+"-defiende-"+def);
-            if (att>def) {
-                ganador=atacante;
-            } else {
-                ganador=defensor;
-            }   
-        }
-        return ganador;
-    }
-
-
-
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         String seguir="s";
@@ -79,27 +55,40 @@ public class Conan_El_Bárbaro {
                 //pelea con cada zombie
                 System.out.println("Zombie"+numZombie+":");
                 do {
+                    //atacante jugador
                     if (rol.equals(JUGADOR)) {
-                        rol=pelea(JUGADOR,ENEMY+numZombie,attConanMax,DEFZOMBIEMAX,JUGADOR);
-                        //atacante jugador ganador jugador, zombie pierde vida y muere.
-                        if (rol.equals(JUGADOR)) {
-                            zombieVida--;
-                            System.out.println(ENEMY+numZombie+" ha muerto");
-                        
-                        //lesiona
-                        }else if(rol.equals("LESIONA")){   
+                        int att=(int)(Math.random()*(attConanMax+1));
+                            System.out.println(JUGADOR+"-Ataca-"+att);
+                            //comprobacion de si se autolesiona o no
+                            if (att<=5) {
+                                System.out.println("Conan se autolesiona");
+                                conanVida--;
+                                System.out.print(JUGADOR+" pierde una de vida...le quedan "+conanVida);
+                                System.out.println(conanVida<=1?"vida":" vidas");
+                                rol=ENEMY;
+                            } else {
+                                int def=(int)(Math.random()*(DEFZOMBIEMAX+1));
+                                System.out.println(ENEMY+"-defiende-"+def);
+                                //
+                                if (att>def) {
+                                    zombieVida--;
+                                    System.out.println(ENEMY+numZombie+" ha muerto");
+                                } else {
+                                    rol=ENEMY;
+                                }   
+                            }
+                    //atacante zombie
+                    } else {    
+                        int att=(int)(Math.random()*(ATTZOMBIEMAX+1));
+                        System.out.println(ENEMY+"-Ataca-"+att);
+                        int def=(int)(Math.random()*(defConanMax+1));
+                        System.out.println(JUGADOR+"-defiende-"+def);
+                        if (att>def) {
                             conanVida--;
                             System.out.print(JUGADOR+" pierde una de vida...le quedan "+conanVida);
                             System.out.println(conanVida<=1?"vida":" vidas");
-                            rol=ENEMY;
-                        }
-                    } else {
-                        rol=pelea(ENEMY+numZombie,JUGADOR,ATTZOMBIEMAX,defConanMax,JUGADOR);
-                        //atacante zombie, ganador zombie, jugador pierde vida, y distingue si es singular o plural.
-                        if (!(rol.equals(JUGADOR))) {
-                            conanVida--;
-                            System.out.print(JUGADOR+" pierde una de vida...le quedan "+conanVida);
-                            System.out.println(conanVida<=1?" vida":" vidas");
+                        } else {
+                            rol=JUGADOR;
                         }
                     }
                     System.out.print("-------------------ENTER PA CONTINUAR-------------------");
@@ -108,8 +97,8 @@ public class Conan_El_Bárbaro {
                 numZombie++;
             } while (numZombie!=NUMZOMBIETOT && conanVida!=0);
                 System.out.print("-------------------");
-                System.out.print(conanVida==0?"GAME OVER":"ENHORABUENA");
-                System.out.print("-------------------");
+                System.out.print(conanVida==0?"GAME OVER":"\nENHORABUENA\nHAS LOGRADO EL TESORO\n");
+                System.out.println("-------------------");
             //seguir?
             seguir="";
             do {
