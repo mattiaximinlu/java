@@ -23,9 +23,10 @@ public class ej5 {
                     String frase=sc.nextLine();
                     cifrado="";
                     for (int i = 0; i < frase.length(); i++) {
-                        char letra=(char)(frase.charAt(i)+factor);
+                        char letraPos=frase.charAt(i);
+                        char letra=(char)(letraPos+factor);
                         //comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta de 26, lo mismo con las minusculas
-                        if ((frase.charAt(i)>=65 && frase.charAt(i)<65+26 &&letra>65+26)||(frase.charAt(i)>=97 && frase.charAt(i)<97+26 &&letra>=97+26)) {
+                        if ((letraPos>='A' && letraPos<='Z' &&letra>'Z')||(letraPos>='a' && letraPos<='z' &&letra>='z')) {
                             letra-=26;
                         }
                         cifrado+=letra;
@@ -34,15 +35,15 @@ public class ej5 {
                     System.out.println(cifrado);
                     break;
                 case 2:
-                
                     String decifrado="";
                     for (int i = 0; i < cifrado.length(); i++) {
                         if (i==0) {
                             factor=Character.getNumericValue(cifrado.charAt(i));
                         } else {
-                            char letra=(char)(cifrado.charAt(i)-factor);
+                            char letraPos=cifrado.charAt(i);
+                            char letra=(char)(letraPos-factor);
                             //comprobar que la letra esté entre A y Z y si una vez restado es menor que A suma de 26, lo mismo con las minusculas
-                            if ((cifrado.charAt(i)>=65 && cifrado.charAt(i)<65+26 &&letra<65)||(cifrado.charAt(i)>=97 && cifrado.charAt(i)<97+26 &&letra<97)) {
+                            if ((letraPos>='A' && letraPos<='Z' &&letra<'A')||(letraPos>='a' && letraPos<='z' &&letra<'a')) {
                                 letra+=26;
                             }
                             decifrado+=letra;

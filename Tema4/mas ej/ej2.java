@@ -11,7 +11,7 @@ public class ej2 {
         } else {
             for (int i = 0; i < h; i++) {
                 for (int j = 0; j <= i; j++) {
-                    System.out.print((char)(j+65));
+                    System.out.print((char)(j+'A'));
                 }
                 System.out.println();
             }   
