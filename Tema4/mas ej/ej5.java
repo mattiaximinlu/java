@@ -29,31 +29,42 @@ public class ej5 {
                                 letra -= 26;
                             }
                             cifrado += factor + "" + letra;
+                            //dice que será un zero y al decifrarlo se quedarán iguales incluido números
                         }else{
-                            cifrado +=letraPos;
+                            cifrado +="0"+letraPos;
                         }
                     }
                     System.out.println(cifrado);
                     break;
                 case 2:
-                    factor = 0;
+                    Boolean original=false;
+                    factor=0;
                     String decifrado = "";
                     for (int i = 0; i < cifrado.length(); i++) {
                         char letraPos = cifrado.charAt(i);
-                        if (Character.isDigit(letraPos)) {
+                        System.out.println(letraPos);
+                        System.out.println(original);
+                        if (Character.isDigit(letraPos)&&letraPos!=0) {
                             factor = factor * 10 + Character.getNumericValue(letraPos);
+                            System.out.println("Hola");
                             // comprobar que la letra esté entre A y Z y si una vez restado esté menor que A suma
                             // de 26, lo mismo con las minusculas
-                        } else if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
+                        } else if(letraPos==0){
+                            System.out.println("buenas");
+                            original=true;
+                        }else if(original){
+                            decifrado +=letraPos;
+                            original=false;
+                        }else if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
                             letra = (char) (letraPos - factor);
                             if ((letraPos >= 'A' && letraPos <= 'Z' && letra < 'A')||(letraPos >= 'a' && letraPos <= 'z'&&letra < 'a')){
                                 letra += 26;
                             }
                             factor = 0;
                             decifrado +=letra;
-                            //Si no son numero o no son caracteres, serian signos, lo añade.
                         }else{
-                            decifrado +=letraPos;
+                            System.out.println("Badios");
+                            
                         }
                     }
                     System.out.println(decifrado);

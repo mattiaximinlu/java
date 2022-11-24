@@ -9,7 +9,7 @@ public class ej4 {
         String cifrado = "";
         for (int i = 0; i < frase.length(); i++) {
             char letraPos = frase.charAt(i);
-            int factor = (int) (Math.random() * 26);
+            int factor = (int) (Math.random() * 26+1);
             if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
                 char letra = (char) (letraPos + factor);
                 // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
@@ -18,8 +18,9 @@ public class ej4 {
                     letra -= 26;
                 }
                 cifrado += factor + "" + letra;
+                //0para decir que se queda igual.
             }else{
-                cifrado +=letraPos;
+                cifrado+="0"+letraPos;
             }
         }
         System.out.println(cifrado);
