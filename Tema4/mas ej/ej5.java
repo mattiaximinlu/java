@@ -17,11 +17,12 @@ public class ej5 {
                     System.out.print("Factor: ");
                     factor=sc.nextInt();
                     sc.nextLine();
+                    cifrado=factor+"";
                     //simulacion de numeros muy muy grandes y que dé muchas vueltas
                     factor=factor%26;
                     System.out.print("frase: ");
                     String frase=sc.nextLine();
-                    cifrado="";
+                    
                     for (int i = 0; i < frase.length(); i++) {
                         char letraPos=frase.charAt(i);
                         char letra=(char)(letraPos+factor);
@@ -31,16 +32,17 @@ public class ej5 {
                         }
                         cifrado+=letra;
                     }
-                    cifrado=factor+cifrado;
                     System.out.println(cifrado);
                     break;
                 case 2:
+                    factor=0;
                     String decifrado="";
                     for (int i = 0; i < cifrado.length(); i++) {
-                        if (i==0) {
-                            factor=Character.getNumericValue(cifrado.charAt(i));
+                        char letraPos=cifrado.charAt(i);
+                        if (Character.isDigit(letraPos)) {
+                            factor=factor*10+Character.getNumericValue(letraPos);
                         } else {
-                            char letraPos=cifrado.charAt(i);
+                            factor=factor%26;
                             char letra=(char)(letraPos-factor);
                             //comprobar que la letra esté entre A y Z y si una vez restado es menor que A suma de 26, lo mismo con las minusculas
                             if ((letraPos>='A' && letraPos<='Z' &&letra<'A')||(letraPos>='a' && letraPos<='z' &&letra<'a')) {
