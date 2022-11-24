@@ -8,19 +8,19 @@ public class ej4 {
         sc.close();
         String cifrado = "";
         for (int i = 0; i < frase.length(); i++) {
-            int factor = (int) (Math.random() * 26);
             char letraPos = frase.charAt(i);
-            if (!(Character.isSpaceChar(letraPos))) {
-                char letra = (char) (letraPos + factor);
+            int factor = (int) (Math.random() * 26);
+            char letra=letraPos;
+            if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
+                letra = (char) (letraPos + factor);
                 // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
                 // de 26, lo mismo con las minusculas
-                if ((letraPos >= 'A' && letraPos <= 'Z' && letra > 'Z')
-                        || (letraPos >= 'a' && letraPos <= 'z' && letra >= 'z')) {
+                if ((letraPos >= 'A' && letraPos <= 'Z'&&letra > 'Z')||(letraPos >= 'a' && letraPos <= 'z'&&letra > 'z')){
                     letra -= 26;
                 }
                 cifrado += factor + "" + letra;
-            } else {
-                cifrado += " ";
+            }else{
+                cifrado +=letra;
             }
         }
         System.out.println(cifrado);
