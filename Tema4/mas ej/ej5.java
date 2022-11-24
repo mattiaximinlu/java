@@ -20,15 +20,19 @@ public class ej5 {
                     cifrado = "";
                     for (int i = 0; i < frase.length(); i++) {
                         char letraPos = frase.charAt(i);
-                        factor = (int) (Math.random() * 26);
-                        char letra = (char) (letraPos + factor);
-                        // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
-                        // de 26, lo mismo con las minusculas
-                        if ((letraPos >= 'A' && letraPos <= 'Z' && letra > 'Z')
-                                || (letraPos >= 'a' && letraPos <= 'z' && letra >= 'z')) {
-                            letra -= 26;
+                        if (!(Character.isSpaceChar(letraPos))) {
+                            factor = (int) (Math.random() * 26);
+                            char letra = (char) (letraPos + factor);
+                            // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
+                            // de 26, lo mismo con las minusculas
+                            if ((letraPos >= 'A' && letraPos <= 'Z' && letra > 'Z')
+                                    || (letraPos >= 'a' && letraPos <= 'z' && letra >= 'z')) {
+                                letra -= 26;
+                            }
+                            cifrado += factor + "" + letra;
+                        } else {
+                            cifrado += " ";
                         }
-                        cifrado += factor + "" + letra;
                     }
                     System.out.println(cifrado);
                     break;
@@ -37,18 +41,22 @@ public class ej5 {
                     String decifrado = "";
                     for (int i = 0; i < cifrado.length(); i++) {
                         char letraPos = cifrado.charAt(i);
-                        if (Character.isDigit(letraPos)) {
-                            factor = factor * 10 + Character.getNumericValue(letraPos);
-                        } else {
-                            char letra = (char) (letraPos - factor);
-                            // comprobar que la letra esté entre A y Z y si una vez restado es menor que A
-                            // suma de 26, lo mismo con las minusculas
-                            if ((letraPos >= 'A' && letraPos <= 'Z' && letra < 'A')
-                                    || (letraPos >= 'a' && letraPos <= 'z' && letra < 'a')) {
-                                letra += 26;
+                        if (!(Character.isSpaceChar(letraPos))) {
+                            if (Character.isDigit(letraPos)) {
+                                factor = factor * 10 + Character.getNumericValue(letraPos);
+                            } else {
+                                char letra = (char) (letraPos - factor);
+                                // comprobar que la letra esté entre A y Z y si una vez restado es menor que A
+                                // suma de 26, lo mismo con las minusculas
+                                if ((letraPos >= 'A' && letraPos <= 'Z' && letra < 'A')
+                                        || (letraPos >= 'a' && letraPos <= 'z' && letra < 'a')) {
+                                    letra += 26;
+                                }
+                                decifrado += letra;
+                                factor = 0;
                             }
-                            decifrado += letra;
-                            factor = 0;
+                        } else {
+                            decifrado += " ";
                         }
                     }
                     System.out.println(decifrado);
