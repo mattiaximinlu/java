@@ -10,9 +10,8 @@ public class ej4 {
         for (int i = 0; i < frase.length(); i++) {
             char letraPos = frase.charAt(i);
             int factor = (int) (Math.random() * 26);
-            char letra=letraPos;
             if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
-                letra = (char) (letraPos + factor);
+                char letra = (char) (letraPos + factor);
                 // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
                 // de 26, lo mismo con las minusculas
                 if ((letraPos >= 'A' && letraPos <= 'Z'&&letra > 'Z')||(letraPos >= 'a' && letraPos <= 'z'&&letra > 'z')){
@@ -20,7 +19,7 @@ public class ej4 {
                 }
                 cifrado += factor + "" + letra;
             }else{
-                cifrado +=letra;
+                cifrado +=letraPos;
             }
         }
         System.out.println(cifrado);
