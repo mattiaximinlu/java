@@ -2,20 +2,26 @@ import java.util.Scanner;
 
 public class ej4 {
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("frase: ");
-        String frase=sc.nextLine();
+        String frase = sc.nextLine();
         sc.close();
-        String cifrado="";
+        String cifrado = "";
         for (int i = 0; i < frase.length(); i++) {
-            int factor=(int)(Math.random()*26);
-            char letraPos=frase.charAt(i);
-            char letra=(char)(letraPos+factor);
-            //comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta de 26, lo mismo con las minusculas
-            if ((letraPos>='A' && letraPos<='Z' &&letra>'Z')||(letraPos>='a' && letraPos<='z' &&letra>='z')) {
-                letra-=26;
+            int factor = (int) (Math.random() * 26);
+            char letraPos = frase.charAt(i);
+            if (!(Character.isSpaceChar(letraPos))) {
+                char letra = (char) (letraPos + factor);
+                // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
+                // de 26, lo mismo con las minusculas
+                if ((letraPos >= 'A' && letraPos <= 'Z' && letra > 'Z')
+                        || (letraPos >= 'a' && letraPos <= 'z' && letra >= 'z')) {
+                    letra -= 26;
+                }
+                cifrado += factor + "" + letra;
+            } else {
+                cifrado += " ";
             }
-            cifrado+=factor+""+letra;
         }
         System.out.println(cifrado);
     }
