@@ -3,9 +3,8 @@ import java.util.Scanner;
 public class ej5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        int opcion,factor;
         String cifrado = "";
-        int factor = 0;
         char letra;
         do {
             System.out.println("(1)cifrar");
@@ -22,7 +21,6 @@ public class ej5 {
                     for (int i = 0; i < frase.length(); i++) {
                         char letraPos = frase.charAt(i);
                         factor = (int) (Math.random() * 26);
-                        letra=letraPos;
                         if ((letraPos >= 'A' && letraPos <= 'Z')||(letraPos >= 'a' && letraPos <= 'z')){
                             letra = (char) (letraPos + factor);
                             // comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta
@@ -32,7 +30,7 @@ public class ej5 {
                             }
                             cifrado += factor + "" + letra;
                         }else{
-                            cifrado +=letra;
+                            cifrado +=letraPos;
                         }
                     }
                     System.out.println(cifrado);
@@ -42,7 +40,6 @@ public class ej5 {
                     String decifrado = "";
                     for (int i = 0; i < cifrado.length(); i++) {
                         char letraPos = cifrado.charAt(i);
-                        letra=letraPos;
                         if (Character.isDigit(letraPos)) {
                             factor = factor * 10 + Character.getNumericValue(letraPos);
                             // comprobar que la letra esté entre A y Z y si una vez restado esté menor que A suma
@@ -54,15 +51,12 @@ public class ej5 {
                             }
                             factor = 0;
                             decifrado +=letra;
+                            //Si no son numero o no son caracteres, serian signos, lo añade.
                         }else{
-                            decifrado +=letra;
+                            decifrado +=letraPos;
                         }
-                        
                     }
                     System.out.println(decifrado);
-                    break;
-
-                default:
                     break;
             }
         } while (opcion != 3);
