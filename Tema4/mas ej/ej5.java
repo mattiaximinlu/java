@@ -12,27 +12,23 @@ public class ej5 {
             System.out.println("(3)salir");
             System.out.print("opcion: ");
             opcion=sc.nextInt();
+            sc.nextLine();
             switch (opcion) {
                 case 1:           
-                    System.out.print("Factor: ");
-                    factor=sc.nextInt();
-                    sc.nextLine();
-                    cifrado=factor+"";
-                    //simulacion de numeros muy muy grandes y que dé muchas vueltas
-                    factor=factor%26;
-                    System.out.print("frase: ");
-                    String frase=sc.nextLine();
-                    
-                    for (int i = 0; i < frase.length(); i++) {
-                        char letraPos=frase.charAt(i);
-                        char letra=(char)(letraPos+factor);
-                        //comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta de 26, lo mismo con las minusculas
-                        if ((letraPos>='A' && letraPos<='Z' &&letra>'Z')||(letraPos>='a' && letraPos<='z' &&letra>='z')) {
-                            letra-=26;
+                        System.out.print("frase: ");
+                        String frase=sc.nextLine();
+                        cifrado="";
+                        for (int i = 0; i < frase.length(); i++) {
+                            char letraPos=frase.charAt(i);
+                            factor=(int)(Math.random()*26);
+                            char letra=(char)(letraPos+factor);
+                            //comprobar que la letra esté entre A y Z y si una vez sumado supera la Z resta de 26, lo mismo con las minusculas
+                            if ((letraPos>='A' && letraPos<='Z' &&letra>'Z')||(letraPos>='a' && letraPos<='z' &&letra>='z')) {
+                                letra-=26;
+                            }
+                            cifrado+=factor+""+letra;
                         }
-                        cifrado+=letra;
-                    }
-                    System.out.println(cifrado);
+                        System.out.println(cifrado);
                     break;
                 case 2:
                     factor=0;
@@ -42,14 +38,14 @@ public class ej5 {
                         if (Character.isDigit(letraPos)) {
                             factor=factor*10+Character.getNumericValue(letraPos);
                         } else {
-                            factor=factor%26;
                             char letra=(char)(letraPos-factor);
                             //comprobar que la letra esté entre A y Z y si una vez restado es menor que A suma de 26, lo mismo con las minusculas
                             if ((letraPos>='A' && letraPos<='Z' &&letra<'A')||(letraPos>='a' && letraPos<='z' &&letra<'a')) {
                                 letra+=26;
                             }
                             decifrado+=letra;
-                            }
+                            factor=0;
+                        }
                     }
                     System.out.println(decifrado);
                     break;
