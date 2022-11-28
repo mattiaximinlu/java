@@ -25,6 +25,7 @@ public class Tande_de_Penalti {
                     tiradaJugador = sc.nextInt();
                 } while (tiradaJugador < 1 || tiradaJugador > 3);
 
+
                 //fallo
                 int fallo = (int) (Math.random() * 10);
                 if (fallo < 2) {
@@ -32,6 +33,7 @@ public class Tande_de_Penalti {
                     jugador = jugador.replaceFirst("-", "O");
 
 
+                //parada o gol?
                 }else{
                     if (tiradaJugador == paradaCpu) {
                         jugador = jugador.replaceFirst("-", "O");
@@ -50,6 +52,8 @@ public class Tande_de_Penalti {
                     System.out.println(nombre + " intenta parar (1 (izquierda), 2 (derecha) o 3 (centro))");
                     paradaJugador = sc.nextInt();
                 } while (paradaJugador < 1 || paradaJugador > 3);
+
+                //parada o gol
                 if (paradaJugador == tiradaCpu) {
                     cpu = cpu.replaceFirst("-", "O");
                     System.out.println("-PARADA-");
