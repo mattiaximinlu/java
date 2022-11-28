@@ -42,15 +42,12 @@ public class ej5 {
                     String decifrado = "";
                     for (int i = 0; i < cifrado.length(); i++) {
                         char letraPos = cifrado.charAt(i);
-                        System.out.println(letraPos);
-                        System.out.println(original);
-                        if (Character.isDigit(letraPos)&&letraPos!=0) {
+                        if (Character.isDigit(letraPos)&&(!(letraPos=='0'&&factor==0))&&(!(original))) {
                             factor = factor * 10 + Character.getNumericValue(letraPos);
                             System.out.println("Hola");
                             // comprobar que la letra esté entre A y Z y si una vez restado esté menor que A suma
                             // de 26, lo mismo con las minusculas
-                        } else if(letraPos==0){
-                            System.out.println("buenas");
+                        } else if(letraPos=='0'&&original==false){
                             original=true;
                         }else if(original){
                             decifrado +=letraPos;
@@ -62,9 +59,6 @@ public class ej5 {
                             }
                             factor = 0;
                             decifrado +=letra;
-                        }else{
-                            System.out.println("Badios");
-                            
                         }
                     }
                     System.out.println(decifrado);
