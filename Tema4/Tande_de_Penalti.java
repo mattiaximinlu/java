@@ -15,6 +15,9 @@ public class Tande_de_Penalti {
 
         System.out.println("\nEMPEZA LA TANDA DE PENALTIS\n");
         do {
+
+            int fallo = (int) (Math.random() * 10);
+
             ronda++;
             // turno jugador
             if (ronda % 2 == 1) {
@@ -26,13 +29,14 @@ public class Tande_de_Penalti {
                     tiradaJugador = sc.nextInt();
                 } while (tiradaJugador < 1 || tiradaJugador > 3);
 
+                
                 // fallo
-                int fallo = (int) (Math.random() * 10);
                 if (fallo < 2) {
                     System.out.println(nombre + " ha tirado fuera");
                     jugador = jugador.replaceFirst("-", "O");
 
-                    // parada o gol?
+
+                // parada o gol?
                 } else {
                     if (tiradaJugador == paradaCpu) {
                         jugador = jugador.replaceFirst("-", "O");
@@ -52,7 +56,15 @@ public class Tande_de_Penalti {
                     paradaJugador = sc.nextInt();
                 } while (paradaJugador < 1 || paradaJugador > 3);
 
-                // parada o gol
+
+             // fallo
+             if (fallo < 2) {
+                 System.out.println("CPU ha tirado fuera");
+                 cpu = cpu.replaceFirst("-", "O");
+
+
+            // parada o gol?
+            }else{
                 if (paradaJugador == tiradaCpu) {
                     cpu = cpu.replaceFirst("-", "O");
                     System.out.println("-PARADA-");
@@ -61,6 +73,8 @@ public class Tande_de_Penalti {
                     System.out.println("-GOl-");
                     golCpu++;
                 }
+
+             }
             }
             System.out.println(nombre + "\t" + jugador);
             System.out.println("CPU" + "\t" + cpu);
