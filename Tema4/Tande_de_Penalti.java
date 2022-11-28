@@ -5,18 +5,19 @@ public class Tande_de_Penalti {
         Scanner sc = new Scanner(System.in);
         System.out.print("¿Cual es tu nombre? ");
         String nombre = sc.nextLine();
+        int ronda = 1;
         // resultado
         String jugador = "-----";
         String cpu = "-----";
-        // numGol
+        // numGol para comprobar empate y mostrar el ganador
         int golJugador = 0;
         int golCpu = 0;
-        // ronda
-        int penalti = 1;
+        
+        
         System.out.println("\nEMPEZA LA TANDA DE PENALTIS\n");
         do {
             //turno jugador
-            if (penalti % 2 == 1) {
+            if (ronda % 2 == 1) {
                 int tiradaJugador;
                 int paradaCpu = (int) (Math.random() * 3 + 1);
                 do {
@@ -29,6 +30,8 @@ public class Tande_de_Penalti {
                 if (fallo < 2) {
                     System.out.println(nombre + " ha tirado fuera");
                     jugador = jugador.replaceFirst("-", "O");
+
+
                 }else{
                     if (tiradaJugador == paradaCpu) {
                         jugador = jugador.replaceFirst("-", "O");
@@ -61,14 +64,20 @@ public class Tande_de_Penalti {
             // despues de las cincos rondas y que cpu haya tirado ya, añade los guiones, si
             // no hubiera un empate sale directamente, y se añaden despues de que se
             // muestren los resultados.
-            if (penalti >= 10 && penalti % 2 == 0) {
+            if (ronda >= 10 && ronda % 2 == 0) {
                 jugador += "-";
                 cpu += "-";
             }
-            penalti++;
-            // se repite cuando hay un empate, cuando no ha cumpletado las 5 penaltis cada
+            ronda++;
+            // se repite cuando hay un empate, cuando no ha cumpletado las 5 rondas cada
             // uno y cuando tire el jugador, osea que cpu no ha tirado todavia
-        } while (golJugador == golCpu || penalti % 2 == 0 || penalti < 10 );
+        } while (golJugador == golCpu || ronda % 2 == 0 || ronda < 10 );
         sc.close();
+        System.out.println("-----------------------");
+        //ganador
+        System.out.println("Gol de jugador: "+golJugador);
+        System.out.println("Gol de CPU: "+golCpu);
+        //sacando el mayor numero de gol sabemos el numero de gol del ganador y si es igual al numero de col de CPU gana CPU si no nombre jugador
+        System.out.println("Ha ganado "+(Math.max(golJugador, golCpu)==golCpu?"CPU":nombre));
     }
 }
