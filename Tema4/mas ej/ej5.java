@@ -44,7 +44,6 @@ public class ej5 {
                         char letraPos = cifrado.charAt(i);
                         if (Character.isDigit(letraPos)&&(!(letraPos=='0'&&factor==0))&&(!(original))) {
                             factor = factor * 10 + Character.getNumericValue(letraPos);
-                            System.out.println("Hola");
                             // comprobar que la letra esté entre A y Z y si una vez restado esté menor que A suma
                             // de 26, lo mismo con las minusculas
                         } else if(letraPos=='0'&&original==false){
