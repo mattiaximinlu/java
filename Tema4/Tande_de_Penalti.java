@@ -5,19 +5,20 @@ public class Tande_de_Penalti {
         Scanner sc = new Scanner(System.in);
         System.out.print("¿Cual es tu nombre? ");
         String nombre = sc.nextLine();
-        int ronda = 1;
+        int ronda = 0;
         // resultado
         String jugador = "-----";
         String cpu = "-----";
         // numGol para comprobar empate y mostrar el ganador
         int golJugador = 0;
         int golCpu = 0;
-        
-        
+
         System.out.println("\nEMPEZA LA TANDA DE PENALTIS\n");
         do {
-            //turno jugador
+            ronda++;
+            // turno jugador
             if (ronda % 2 == 1) {
+                
                 int tiradaJugador;
                 int paradaCpu = (int) (Math.random() * 3 + 1);
                 do {
@@ -25,16 +26,14 @@ public class Tande_de_Penalti {
                     tiradaJugador = sc.nextInt();
                 } while (tiradaJugador < 1 || tiradaJugador > 3);
 
-
-                //fallo
+                // fallo
                 int fallo = (int) (Math.random() * 10);
                 if (fallo < 2) {
                     System.out.println(nombre + " ha tirado fuera");
                     jugador = jugador.replaceFirst("-", "O");
 
-
-                //parada o gol?
-                }else{
+                    // parada o gol?
+                } else {
                     if (tiradaJugador == paradaCpu) {
                         jugador = jugador.replaceFirst("-", "O");
                         System.out.println("-PARADA-");
@@ -44,7 +43,7 @@ public class Tande_de_Penalti {
                         golJugador++;
                     }
                 }
-            //turno CPU
+                // turno CPU
             } else {
                 int paradaJugador;
                 int tiradaCpu = (int) (Math.random() * 3 + 1);
@@ -53,7 +52,7 @@ public class Tande_de_Penalti {
                     paradaJugador = sc.nextInt();
                 } while (paradaJugador < 1 || paradaJugador > 3);
 
-                //parada o gol
+                // parada o gol
                 if (paradaJugador == tiradaCpu) {
                     cpu = cpu.replaceFirst("-", "O");
                     System.out.println("-PARADA-");
@@ -72,16 +71,17 @@ public class Tande_de_Penalti {
                 jugador += "-";
                 cpu += "-";
             }
-            ronda++;
+            
             // se repite cuando hay un empate, cuando no ha cumpletado las 5 rondas cada
             // uno y cuando tire el jugador, osea que cpu no ha tirado todavia
-        } while (golJugador == golCpu || ronda % 2 == 0 || ronda < 10 );
+        } while (golJugador == golCpu || ronda % 2 == 1 || ronda < 10);
         sc.close();
         System.out.println("-----------------------");
-        //ganador
-        System.out.println("Gol de jugador: "+golJugador);
-        System.out.println("Gol de CPU: "+golCpu);
-        //sacando el mayor numero de gol sabemos el numero de gol del ganador y si es igual al numero de col de CPU gana CPU si no nombre jugador
-        System.out.println("Ha ganado "+(Math.max(golJugador, golCpu)==golCpu?"CPU":nombre));
+        // ganador
+        System.out.println("Gol de jugador: " + golJugador);
+        System.out.println("Gol de CPU: " + golCpu);
+        // sacando el mayor numero de gol sabemos el numero de gol del ganador y si es
+        // igual al numero de col de CPU gana CPU si no nombre jugador
+        System.out.println("Ha ganado " + (Math.max(golJugador, golCpu) == golCpu ? "CPU" : nombre));
     }
 }
