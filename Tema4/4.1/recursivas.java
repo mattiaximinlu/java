@@ -28,16 +28,10 @@ public class recursivas {
             fila(l-1);
         }
     }
-    public static String split(String[] split) {
-        int longitud=split.length-1;
-        String frase=split[longitud];
-        frase=split(split, longitud-1)+frase;   
-        return frase;
-    }
     public static String split(String[] split, int longitud) {
         String frase="";
         if (longitud>=0) {
-            frase+=split[longitud]+" "+split(split, longitud-1);
+            frase+=split(split, longitud-1)+split[longitud]+" ";
         }
         return frase;
     }
@@ -55,6 +49,7 @@ public class recursivas {
         System.out.println(suma);
         System.out.println(fact);
         triangulo(num);
-        System.out.println(split(split));
+        int longitud=split.length-1;
+        System.out.println(split(split,longitud));
     }
 }
