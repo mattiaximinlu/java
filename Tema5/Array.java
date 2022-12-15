@@ -1,9 +1,9 @@
-
 import java.util.Scanner;
 
 public class Array {
     static Scanner sc=new Scanner(System.in);
     static String[] lista=new String[10];
+
     private static void menu() {
         int opcion=0;
         System.out.println("Menu:");
@@ -97,7 +97,6 @@ public class Array {
             sc.nextLine();
             ver();
         }
-       
     }
     private static void llenar() {
         for (int i = 0; i < lista.length; i++) {
@@ -113,7 +112,6 @@ public class Array {
         System.out.println();
     }
     public static void main(String[] args) {
-        //array de 10 elementos
         menu();
     }
 }
