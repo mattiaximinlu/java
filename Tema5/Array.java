@@ -62,28 +62,42 @@ public class Array {
     }
     private static void insertar() {
         System.out.print("Elige una posición(0-"+(lista.length-1)+"): ");
-        int pos=sc.nextInt();
-        sc.nextLine();
-        if (pos<0 || pos>lista.length-1) {
+        int pos=0;
+        try {
+            pos=sc.nextInt();
+            sc.nextLine();
+            if (pos<0 || pos>lista.length-1) {
+                System.out.println("Elige una opción correcta");
+                insertar();
+            } else {
+                System.out.print("Que quieres insertar: ");
+                String insertar=sc.nextLine();
+                lista[pos]=insertar;
+            }
+        } catch (Exception e) {
             System.out.println("Elige una opción correcta");
+            sc.nextLine();
             insertar();
-        } else {
-            System.out.print("Que quieres insertar: ");
-            String insertar=sc.nextLine();
-            lista[pos]=insertar;
         }
-        
     }
     private static void ver() {
         System.out.print("Elige una posición(0-"+(lista.length-1)+"): ");
-        int pos=sc.nextInt();
-        sc.nextLine();
-        if (pos<0 || pos>lista.length-1) {
+        int pos=0;
+        try {
+            pos=sc.nextInt();    
+            sc.nextLine();
+            if (pos<0 || pos>lista.length-1) {
+                System.out.println("Elige una opción correcta");
+                ver();
+            } else {
+                System.out.println(lista[pos]);
+            }
+        } catch (Exception e) {
             System.out.println("Elige una opción correcta");
+            sc.nextLine();
             ver();
-        } else {
-            System.out.println(lista[pos]);
         }
+       
     }
     private static void llenar() {
         for (int i = 0; i < lista.length; i++) {
