@@ -136,7 +136,7 @@ public class PartidoBaloncesto {
      * @return
      */
     static boolean canasta(int porcentajeAcierto) {
-        int random = (int) (Math.random() * 100);
+        int random = aleatorio(100);
         boolean canasta = false;
         if (porcentajeAcierto > random) {
             canasta = true;
