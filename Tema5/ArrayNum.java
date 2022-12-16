@@ -15,11 +15,12 @@ public class ArrayNum {
         System.out.println("-4 llenar");
         System.out.println("-5 Mostrar");
         System.out.println("-6 llenarAleatorio");
+        System.out.println("-7 ordenar");
         System.out.println("-0 salir");
         System.out.print("Opcion: ");
         try {
             opcion=sc.nextInt();
-            if (opcion<0 || opcion>6) {
+            if (opcion<0 || opcion>7) {
                 System.out.println("Elige una opcion correcta");
                 menu();
             }else{
@@ -55,10 +56,13 @@ public class ArrayNum {
                 break;
             case 6:
                 aleatorio();
+                break;
+                case 7:
+                ordenar();
                 break;            
             case 0:
                 seguir=false;
-                break;   
+                break;
         }
         if (seguir) {
             menu();
@@ -138,7 +142,22 @@ public class ArrayNum {
         }
         System.out.println("Se ha llenado");
     }
-    
+    private static void ordenar() {
+        int var1=0;
+        int var2=0;
+        for (int i = 0; i < lista.length; i++) {
+            for (int j = 0; j < lista.length-i; j++) {
+                var1=lista[j];
+                if (var2>var1) {
+                    lista[j]=var2;
+                    lista[j-1]=var1;
+                } else {
+                    var2=var1;   
+                }
+            }
+            var2=0;
+        }
+    }
     public static void main(String[] args) {
         menu();
     }
