@@ -13,21 +13,22 @@ public class Array {
         System.out.println("-3 Ver posición");
         System.out.println("-4 llenar");
         System.out.println("-5 Mostrar");
-        System.out.println("-6 salir");
+        System.out.println("-0 salir");
         System.out.print("Opcion: ");
         try {
             opcion=sc.nextInt();
             sc.nextLine();
+            if (opcion<0 || opcion>5) {
+                System.out.println("Elige una opcion correcta");
+                menu();
+            }else{
+                opcion(opcion);
+            }
         } catch (Exception e) {
             System.out.println("Elige una opcion correcta");
             sc.nextLine();
             menu();
         }
-        if (opcion<1 || opcion>6) {
-            System.out.println("Elige una opcion correcta");
-            menu();
-        }
-        opcion(opcion);
     }
     private static void opcion(int opcion) {
         boolean seguir=true;
@@ -47,7 +48,7 @@ public class Array {
             case 5:
                 mostrar();
                 break;
-            case 6:
+            case 0:
                 seguir=false;
                 break;   
         }
