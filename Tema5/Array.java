@@ -119,7 +119,7 @@ public class Array {
     /*mostrar toda la lista */
     private static void mostrar() {
         for (String palabra : lista) {
-            System.out.print(palabra);
+            System.out.print(palabra+" ");
         }
         System.out.println();
     }
