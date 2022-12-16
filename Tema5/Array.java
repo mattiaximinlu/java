@@ -5,6 +5,7 @@ public class Array {
     static Scanner sc=new Scanner(System.in);
     static String[] lista=new String[10];
 
+    /*imprime el menu y comprueba la opcion */
     private static void menu() {
         int opcion=0;
         System.out.println("Menu:");
@@ -30,6 +31,10 @@ public class Array {
             menu();
         }
     }
+    /**
+     * segun las opciones llama a diferente funciones y si fuera 0 no llama de nuevo al menu
+     * @param opcion
+     */
     private static void opcion(int opcion) {
         boolean seguir=true;
         switch (opcion) {
@@ -56,12 +61,14 @@ public class Array {
             menu();
         }
     }
+    /*todo a null */
     private static void limpiar() {
         for (int i = 0; i < lista.length; i++) {
             lista[i]=null;
         }
         System.out.println("Se ha limpiado");
     }
+    /*insertar en una posicion especifica */
     private static void insertar() {
         System.out.print("Elige una posición(0-"+(lista.length-1)+"): ");
         int pos=0;
@@ -82,6 +89,7 @@ public class Array {
             insertar();
         }
     }
+    /*ver una posicion */
     private static void ver() {
         System.out.print("Elige una posición(0-"+(lista.length-1)+"): ");
         int pos=0;
@@ -100,6 +108,7 @@ public class Array {
             ver();
         }
     }
+    /*llenar la lista */
     private static void llenar() {
         for (int i = 0; i < lista.length; i++) {
             System.out.print("Que quieres insertar(posición "+i+"): ");
@@ -107,12 +116,14 @@ public class Array {
             lista[i]=insertar;
         }
     }
+    /*mostrar toda la lista */
     private static void mostrar() {
         for (int i = 0; i < lista.length; i++) {
             System.out.print(lista[i]+" ");
         }
         System.out.println();
     }
+    
     public static void main(String[] args) {
         menu();
     }
