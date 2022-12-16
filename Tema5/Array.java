@@ -118,8 +118,8 @@ public class Array {
     }
     /*mostrar toda la lista */
     private static void mostrar() {
-        for (int i = 0; i < lista.length; i++) {
-            System.out.print(lista[i]+" ");
+        for (String palabra : lista) {
+            System.out.print(palabra);
         }
         System.out.println();
     }
