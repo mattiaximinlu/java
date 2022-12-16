@@ -19,7 +19,6 @@ public class ArrayNum {
         System.out.print("Opcion: ");
         try {
             opcion=sc.nextInt();
-            sc.nextLine();
             if (opcion<0 || opcion>6) {
                 System.out.println("Elige una opcion correcta");
                 menu();
@@ -78,7 +77,6 @@ public class ArrayNum {
         int pos=0;
         try {
             pos=sc.nextInt();
-            sc.nextLine();
             if (pos<0 || pos>lista.length-1) {
                 System.out.println("Elige una opción correcta");
                 insertar();
@@ -99,7 +97,6 @@ public class ArrayNum {
         int pos=0;
         try {
             pos=sc.nextInt();    
-            sc.nextLine();
             if (pos<0 || pos>lista.length-1) {
                 System.out.println("Elige una opción correcta");
                 ver();
