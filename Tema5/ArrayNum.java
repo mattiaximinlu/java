@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayNum {
@@ -16,11 +17,13 @@ public class ArrayNum {
         System.out.println("-5 Mostrar");
         System.out.println("-6 llenarAleatorio");
         System.out.println("-7 ordenar");
+        System.out.println("-8 Buscar");
+        System.out.println("-9 Buscar Ordenado");
         System.out.println("-0 salir");
         System.out.print("Opcion: ");
         try {
             opcion=sc.nextInt();
-            if (opcion<0 || opcion>7) {
+            if (opcion<0 || opcion>10) {
                 System.out.println("Elige una opcion correcta");
                 menu();
             }else{
@@ -57,9 +60,18 @@ public class ArrayNum {
             case 6:
                 aleatorio();
                 break;
-                case 7:
+            case 7:
                 ordenar();
-                break;            
+                break;
+            case 8:
+                System.out.println(buscar(opcion));
+                break;
+            case 9:
+                int num=sc.nextInt();
+                int[] copy=Arrays.copyOf(lista, lista.length);
+                Arrays.sort(copy);
+                System.out.println(buscarOrdenado(copy,num));
+                break;
             case 0:
                 seguir=false;
                 break;
@@ -157,6 +169,41 @@ public class ArrayNum {
             }
             var2=0;
         }
+        //ordenar
+        //Arrays.sort(lista);
+    }
+    private static int buscar(int elemento) {
+        int pos=-1;
+        /*for (int i = 0; i < lista.length; i++) {
+            if (lista[i]==elemento) {
+                pos=i;
+            }
+        }*/
+        int indice=0;
+        while (pos==-1 && indice<lista.length) {
+            if (lista[indice]==elemento) {
+                pos=indice;
+            }else{
+                indice++;
+            }
+        }
+        return pos;
+    }
+    private static boolean buscarOrdenado(int[] copy, int elemento) {
+        boolean res;
+        //obtener la mitad sin decimales
+        int indice=(int)Math.floor(copy.length/2);
+        if (copy.length==1) {
+            res=copy[0]==elemento;
+        } else {
+            if (copy[indice]>elemento) {
+                copy=Arrays.copyOf(copy, indice);
+            } else {
+                copy=Arrays.copyOfRange(copy,indice,copy.length);
+            }
+            res=buscarOrdenado(copy,elemento);
+        }
+        return res;
     }
     public static void main(String[] args) {
         menu();
