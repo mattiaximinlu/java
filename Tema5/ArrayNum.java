@@ -19,11 +19,12 @@ public class ArrayNum {
         System.out.println("-7 ordenar");
         System.out.println("-8 Buscar");
         System.out.println("-9 Buscar Ordenado");
+        System.out.println("-10 Desordenar");
         System.out.println("-0 salir");
         System.out.print("Opcion: ");
         try {
             opcion=sc.nextInt();
-            if (opcion<0 || opcion>10) {
+            if (opcion<0 || opcion>11) {
                 System.out.println("Elige una opcion correcta");
                 menu();
             }else{
@@ -71,6 +72,9 @@ public class ArrayNum {
                 int[] copy=Arrays.copyOf(lista, lista.length);
                 Arrays.sort(copy);
                 System.out.println(buscarOrdenado(copy,num));
+                break;
+                case 10:
+                desordenar();
                 break;
             case 0:
                 seguir=false;
@@ -204,6 +208,26 @@ public class ArrayNum {
             res=buscarOrdenado(copy,elemento);
         }
         return res;
+    }
+    public static void desordenar() {
+        //alta probabilidad de que se quede en la misma posicion
+        int[] copy =Arrays.copyOf(lista, lista.length);
+        for (int i = 0; i < copy.length; i++) {
+            int random=(int)(Math.random()*copy.length);
+            if (copy[random]!=-1){
+                lista[i]=copy[random];
+                copy[random]=-1;
+            }else{
+                i--;
+            }
+        }
+        //mas que aleatorio parece cambiar la posicion
+        for (int i = 0; i < lista.length; i++) {
+                int random=(int)(Math.random()*lista.length);
+                int almacen=lista[i];
+                lista[i]=lista[random];
+                lista[random]=almacen;
+        }
     }
     public static void main(String[] args) {
         menu();
