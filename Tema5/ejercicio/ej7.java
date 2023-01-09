@@ -30,7 +30,7 @@ public class ej7 {
             } */
 
 
-            //imprimir el otro valor sin cambiarlo
+            //imprimir el nuevo valor sin cambiarlo
             System.out.print(lista[i]==antes?"\""+despues+"\" ":lista[i]+" ");
         }
         System.out.println();
