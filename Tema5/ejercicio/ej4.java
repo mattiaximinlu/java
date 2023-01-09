@@ -14,8 +14,7 @@ public class ej4 {
             cuadrado[i] = (int) (Math.pow(numero[i], 2));
             cubo[i] = (int) (Math.pow(numero[i], 3));
 
-            System.out.print(numero[i] + "\t" + cuadrado[i] + "\t" + cubo[i]);
-            System.out.println();
+            System.out.println(numero[i] + "\t" + cuadrado[i] + "\t" + cubo[i]);
         }
     }
 }
