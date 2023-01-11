@@ -8,6 +8,7 @@ public class ej8 {
     final static char carácter='*';
     final static String[] mes={"Ene", "Feb", "Mar", "Abr", "May", "Jun","Jul","Ago","Sep","Oct","Nov","Dic"};
     static int[] temp= new int[mes.length];
+
     private static void pedirValor(Scanner sc) {
         for (int i = 0; i < temp.length; i++) {
             System.out.print("La temperatura media de "+mes[i]+": ");
@@ -16,7 +17,7 @@ public class ej8 {
     }
     private static void imprimirDiagrama() {
         for (int i = 0; i < temp.length; i++) {
-            System.out.print(mes[i]+": ");
+            System.out.print(mes[i]+"("+temp[i]+"): ");
             for (int j = 0; j < temp[i]; j++) {
                 System.out.print(carácter);
             }
@@ -27,5 +28,6 @@ public class ej8 {
         Scanner sc=new Scanner(System.in);
         pedirValor(sc);
         imprimirDiagrama();
+        sc.close();
     }
 }
